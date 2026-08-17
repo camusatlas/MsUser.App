@@ -1,0 +1,15 @@
+<Solution>
+  <Folder Name="/SRC/">
+    <Project Path="MsUser.Api/MsUser.Api.csproj" />
+    <Project Path="MsUser.Application/MsUser.Application.csproj" />
+    <Project Path="MsUser.Database/MsUser.Database.csproj" />
+    <Project Path="MsUser.Domain/MsUser.Domain.csproj" />
+    <Project Path="MsUser.Internal.Contract/MsUser.Internal.Contract.csproj" />
+    <Project Path="MsUser.Persistence/MsUser.Persistence.csproj" />
+    <Project Path="MsUser.Service/MsUser.Service.csproj" />
+    <Project Path="MsUser.Shared.Resources/MsUser.Shared.Resources.csproj" />
+  </Folder>
+  <Folder Name="/TESTS/">
+    <Project Path="MsUser.UnitTest/MsUser.UnitTest.csproj" Id="beecbf09-4d03-40a7-8dc1-f8841295d606" />
+  </Folder>
+</Solution>

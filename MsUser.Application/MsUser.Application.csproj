@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="RealPlaza.Observability" Version="1.1.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MsUser.Domain\MsUser.Domain.csproj" />
+    <ProjectReference Include="..\MsUser.Internal.Contract\MsUser.Internal.Contract.csproj" />
+    <ProjectReference Include="..\MsUser.Persistence\MsUser.Persistence.csproj" />
+    <ProjectReference Include="..\MsUser.Service\MsUser.Service.csproj" />
+    <ProjectReference Include="..\MsUser.Shared.Resources\MsUser.Shared.Resources.csproj" />
+  </ItemGroup>
+
+</Project>
