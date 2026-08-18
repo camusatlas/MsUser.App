@@ -50,6 +50,9 @@ namespace MsUser.Application
         public const string UserNotExist = "El usuario no esta registrado en la base de datos";
         public const string Mail = "El correo electronico es invalido, Ingrese correctamente el correo electronico";
         public const string UserName = "No existe un usuario con ese nombre";
+        public const string SortColumnInvalid = "La columna de ordenamiento no es válida";
+        public const string SortDirectionInvalid = "La dirección de ordenamiento no es válida";
+        public const string UserAlreadyInactive = "El usuario ya se encuentra inactivo";
     }
 
     public static class LogConstants

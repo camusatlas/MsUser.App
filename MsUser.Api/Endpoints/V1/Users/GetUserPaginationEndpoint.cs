@@ -15,13 +15,13 @@ namespace MsUser.Api.Endpoints.V1.Users
             [FromQuery] string? name,
             [FromQuery] int? pageCurrent,
             [FromQuery] int? pageSize,
-            [FromQuery] string sortColumn,
-            [FromQuery] string sortDirection,
+            [FromQuery] string? sortColumn,
+            [FromQuery] string? sortDirection,
             [FromServices] IMessageBus bus,
             CancellationToken ct)
         {
             ArgumentNullException.ThrowIfNull(bus, nameof(bus));
-            var query = new GetUserPagination(name, new Paging(pageCurrent ?? 1, pageSize ?? Application.Constants.DefaultPageSize), sortColumn, sortDirection);
+            var query = new GetUserPagination(name, new Paging(pageCurrent ?? 1, pageSize ?? Application.Constants.DefaultPageSize), sortColumn ?? "Name", sortDirection ?? "ASC");
             var result = await bus.InvokeAsync<QueryResult<GetUserPaginationResult>>(query, ct);
             return result.PrepareResponse();
         }
