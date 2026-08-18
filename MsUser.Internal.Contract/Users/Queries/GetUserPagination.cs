@@ -2,5 +2,5 @@
 
 namespace MsUser.Internal.Contract.Users.Queries
 {
-    public record GetUserPagination(string name, Paging Paging, string SortColumn, string SortDirection);
+    public record GetUserPagination(string? name, Paging Paging, string SortColumn, string SortDirection);
 }

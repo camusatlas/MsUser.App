@@ -22,11 +22,11 @@ namespace MsUser.Api.Endpoints.V1.Users
         {
             ArgumentNullException.ThrowIfNull(bus, nameof(bus));
             var query = new GetUserBySearch(
-                id ?? 0,
-                name ?? string.Empty,
-                mail ?? string.Empty,
-                asset ?? false,
-                state ?? 1
+                id,
+                name,
+                mail,
+                asset,
+                state
             );
             var result = await bus.InvokeAsync<QueryResult<GetUserBySearchResult>>(query, ct);
             return result.PrepareResponse();

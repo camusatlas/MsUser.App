@@ -23,7 +23,7 @@ namespace MsUser.Persistence.Users.Queries
 
             return await connection.QuerySingleFunctionAsync<UserDto>("get_user_by_id", parameters);
         }
-        public async Task<IEnumerable<UserDto>> GetBySearch(int id, string name, string mail, bool asset, int state)
+        public async Task<IEnumerable<UserDto>> GetBySearch(int? id, string? name, string? mail, bool? asset, int? state)
         {
             try
             {
@@ -44,7 +44,7 @@ namespace MsUser.Persistence.Users.Queries
             
         }
 
-        public async Task<IEnumerable<UserPaginationDto>> GetUserPagination(string name, int currentIndex, int pageSize, string sortColumn, string sortDirection)
+        public async Task<IEnumerable<UserPaginationDto>> GetUserPagination(string? name, int currentIndex, int pageSize, string? sortColumn, string? sortDirection)
         {
             try
             {

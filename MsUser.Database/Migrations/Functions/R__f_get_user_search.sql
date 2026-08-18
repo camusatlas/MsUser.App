@@ -1,29 +1,7 @@
-DROP FUNCTION IF EXISTS public.get_user_search(INT, VARCHAR, VARCHAR, BOOLEAN, INT);
-
-CREATE OR REPLACE FUNCTION public.get_user_search(
-    pi_id INT,
-    pi_name VARCHAR,
-    pi_mail VARCHAR,
-    pi_asset BOOLEAN,
-    pi_state INT
-)
-RETURNS TABLE
-(
-    id INT,
-    name VARCHAR(400),
-    mail VARCHAR(400),
-    password VARCHAR(500),
-    asset BOOLEAN,
-    state INT,
-    created_id INT,
-    created_user VARCHAR(300),
-    created_date TIMESTAMPTZ,
-    updated_id INT,
-    updated_user VARCHAR(300),
-    updated_date TIMESTAMPTZ
-)
-LANGUAGE plpgsql
-AS $BODY$
+CREATE OR REPLACE FUNCTION public.get_user_search(pi_id integer, pi_name character varying, pi_mail character varying, pi_asset boolean, pi_state integer)
+ RETURNS TABLE(id integer, name character varying, mail character varying, password character varying, asset boolean, state integer, created_id integer, created_user character varying, created_date timestamp with time zone, updated_id integer, updated_user character varying, updated_date timestamp with time zone)
+ LANGUAGE plpgsql
+AS $function$
 BEGIN
     RETURN QUERY
     SELECT
@@ -43,6 +21,8 @@ BEGIN
     WHERE (pi_id IS NULL OR pi_id = 0 OR db.id = pi_id)
       AND (pi_name IS NULL OR pi_name = '' OR db.name ILIKE '%' || pi_name || '%')
       AND (pi_mail IS NULL OR pi_mail = '' OR db.mail ILIKE '%' || pi_mail || '%')
+	  AND (pi_asset IS NULL OR db.asset = pi_asset)
+  	  AND (pi_state IS NULL OR db.state = pi_state)
     ORDER BY db.name ASC;
 END;
-$BODY$;
+$function$;

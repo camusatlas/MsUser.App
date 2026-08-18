@@ -40,7 +40,7 @@ namespace MsUser.Application.Users.Handlers
                     normalzemail,
                     normalizeQuery.asset,
                     normalizeQuery.state);
-                if (normalizeQuery.id > 0 && usuario.Any())
+                if (normalizeQuery.id.HasValue && normalizeQuery.id.Value > 0 && usuario.Any())
                 {
                     var user = usuario.First();
                     if (string.IsNullOrWhiteSpace(user.name))
@@ -56,8 +56,8 @@ namespace MsUser.Application.Users.Handlers
                 _logger.LogInformation("User query successful. Parameters: id = {id}, name = {name}, mail = {mail}, asset = {asset}. Results: {Count}", normalizeQuery.id, normalizeQuery.name, normalizeQuery.mail, normalizeQuery.asset, usuario.Count());
                 var userResult = usuario.Select(x => new UserItem(
                     x.id,
-                    x.name ?? string.Empty,
-                    x.mail ?? string.Empty,
+                    x.name,
+                    x.mail,
                     x.asset,
                     x.state
                 ));
