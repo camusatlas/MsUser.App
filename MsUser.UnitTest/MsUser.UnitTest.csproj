@@ -17,6 +17,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MsUser.Api\MsUser.Api.csproj" />
+    <ProjectReference Include="..\MsUser.Application\MsUser.Application.csproj" />
+    <ProjectReference Include="..\MsUser.Domain\MsUser.Domain.csproj" />
+    <ProjectReference Include="..\MsUser.Persistence\MsUser.Persistence.csproj" />
+    <ProjectReference Include="..\MsUser.Service\MsUser.Service.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Using Include="Xunit" />
   </ItemGroup>
 
