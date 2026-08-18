@@ -45,6 +45,8 @@ namespace MsUser.Application
         public const string UserValidationAcceptance = "Ya se confirmo el correo electronico";
         public const string IdGreaterZero = "El id debe ser mayor a 0.";
         public const string IdExist = "No existe un usuario con ese id";
+        public const string IntPagination = "La página debe ser mayor a 0";
+        public const string PageSizePagination = "El tamaño de la página debe ser mayor a 0";
         public const string UserNotExist = "El usuario no esta registrado en la base de datos";
         public const string Mail = "El correo electronico es invalido, Ingrese correctamente el correo electronico";
         public const string UserName = "No existe un usuario con ese nombre";

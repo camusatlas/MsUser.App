@@ -10,6 +10,10 @@ namespace MsUser.Application.Users.Validators
 {
     public class GetUserPaginationRequestValidator : AbstractValidator<GetUserPagination>
     {
-        //validaciones que se va agregar
+        public GetUserPaginationRequestValidator()
+        {
+            RuleFor(x => x.Paging.CurrentIndex).GreaterThan(0).WithMessage(ValidationMessages.IntPagination);
+            RuleFor(x => x.Paging.PageSize).GreaterThan(0).WithMessage(ValidationMessages.PageSizePagination);
+        }
     }
 }
