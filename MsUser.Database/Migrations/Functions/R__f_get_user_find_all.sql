@@ -42,20 +42,22 @@ BEGIN
         SELECT
             ROW_NUMBER() OVER (
                 ORDER BY
-                    CASE 
-                        WHEN p_sort_column = 'Name' AND p_sort_direction = sortAsc THEN u.name 
-                        WHEN p_sort_column = 'Name' AND p_sort_direction = sortDesc THEN u.name 
-                        WHEN p_sort_column = 'Mail' AND p_sort_direction = sortAsc THEN u.mail 
-                        WHEN p_sort_column = 'Mail' AND p_sort_direction = sortDesc THEN u.mail 
-                        WHEN p_sort_column = 'Asset' AND p_sort_direction = sortAsc THEN u.asset::text
-                        WHEN p_sort_column = 'Asset' AND p_sort_direction = sortDesc THEN u.asset::text
-                        WHEN p_sort_column = 'State' AND p_sort_direction = sortAsc THEN u.state::text
-                        WHEN p_sort_column = 'State' AND p_sort_direction = sortDesc THEN u.state::text
-                        WHEN p_sort_column = 'CreatedDate' AND p_sort_direction = sortAsc THEN to_char(u.created_date, 'YYYYMMDDHH24MISS')
-                        WHEN p_sort_column = 'CreatedDate' AND p_sort_direction = sortDesc THEN to_char(u.created_date, 'YYYYMMDDHH24MISS')
-                        ELSE u.name
-                    END ASC,
-                    u.name ASC  -- Orden secundario para consistencia
+                    CASE WHEN p_sort_column = 'Name' AND p_sort_direction = sortAsc THEN u.name END ASC,
+                    CASE WHEN p_sort_column = 'Name' AND p_sort_direction = sortDesc THEN u.name END DESC,
+            
+                    CASE WHEN p_sort_column = 'Mail' AND p_sort_direction = sortAsc THEN u.mail END ASC,
+                    CASE WHEN p_sort_column = 'Mail' AND p_sort_direction = sortDesc THEN u.mail END DESC,
+            
+                    CASE WHEN p_sort_column = 'Asset' AND p_sort_direction = sortAsc THEN u.asset::text END ASC,
+                    CASE WHEN p_sort_column = 'Asset' AND p_sort_direction = sortDesc THEN u.asset::text END DESC,
+            
+                    CASE WHEN p_sort_column = 'State' AND p_sort_direction = sortAsc THEN u.state END ASC,
+                    CASE WHEN p_sort_column = 'State' AND p_sort_direction = sortDesc THEN u.state END DESC,
+            
+                    CASE WHEN p_sort_column = 'CreatedDate' AND p_sort_direction = sortAsc THEN u.created_date END ASC,
+                    CASE WHEN p_sort_column = 'CreatedDate' AND p_sort_direction = sortDesc THEN u.created_date END DESC,
+            
+                    u.name ASC
             ) AS sequence_id,
             u.id,
             u.name,
